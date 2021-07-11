@@ -1,0 +1,44 @@
+{% extends 'layout.html'%} {%block content%} {%load static %} {%block title%} Login Page {%endblock%}
+<link rel="stylesheet" href="{%static 'store/styles.css' %}" />
+
+<div class="container">
+
+    <div class="rown p-4 m-4">
+        <div class="col-lg-4 mt-4 mb-4 mx-auto border rounded pt-4 p-3">
+            <center>
+                <img src="https://www.freeiconspng.com/uploads/user-interface-login-icon--12.png" width="150" alt="">
+            </center>
+            <h3 class="alert alert-light border mt-4 mb-4 bg-dark text-white">Login Here</h3>
+
+            <form action="/login" method="post">
+                {% csrf_token %} {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+
+                </div>
+                {% endif %}
+
+
+
+
+                <div class="form-group text-white">
+                    <label for="">Email</label>
+                    <input type="email" name="email" class="form-control  bg-dark text-white" placeholder="example@gmail.com" value="{{values.email}}" required autocomplete="off" />
+                </div>
+
+                <div class="form-group text-white">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control  bg-dark text-white" placeholder="***********" required/>
+                </div>
+
+                <div class="form-group pt-2">
+                    <input class="btn btn-sm btn-info col-lg-4" type="submit" value="Login" />
+                    <a class="nav-link float-right" aria-current="page" href="/signup">Create an account</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
